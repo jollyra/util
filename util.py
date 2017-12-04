@@ -1,6 +1,5 @@
 from itertools import permutations
 from collections import defaultdict, namedtuple, Counter
-import requests
 
 
 # 2-D points using (x, y) tuples
