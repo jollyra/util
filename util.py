@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+
+
 from itertools import permutations
 from collections import defaultdict, namedtuple, Counter
 
@@ -25,3 +28,21 @@ def manhattan_distance(p, q):
 
 
 cat = ''.join
+
+
+def trace(func):
+    def inner(*args, **kwargs):
+        ret = func(*args, **kwargs)
+        print('func: {}\targs: {}\tkwargs: {}\tret: {}'
+              .format(func.__name__, args, kwargs, ret))
+        return ret
+    return inner
+
+
+if __name__ == '__main__':
+
+    @trace
+    def sum(a, b):
+        return a + b
+
+    sum(1, 2)
