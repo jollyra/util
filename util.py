@@ -2,8 +2,27 @@
 
 
 from itertools import permutations
+from functools import partial
 from collections import defaultdict, namedtuple, Counter
 
+
+cat = ''.join
+letters = 'abcdefghipqrstuvwxyz'
+
+
+""" Functional helpers """
+
+
+inc = partial(sum, 1)
+dec = partial(sum, -1)
+
+
+def zipwith(func, seq1, seq2):
+    'Join two lists by applying a function to corresponding elements'
+    return [func(*t) for t in zip(seq1, seq2)]
+
+
+""" Cartesian Helpers """
 
 # 2-D points using (x, y) tuples
 def X(point): return point[0]
@@ -27,7 +46,7 @@ def manhattan_distance(p, q):
     return (abs(X(p) - X(q)) + abs(Y(p) - Y(q)))
 
 
-cat = ''.join
+""" Debugging helpers """
 
 
 def trace(func):
@@ -39,10 +58,48 @@ def trace(func):
     return inner
 
 
+""" Input helpers """
+
+
+def input1():
+    'Read a single line value from a file'
+    with open('in.txt', 'r') as f:
+        return f.read().strip()
+
+
+def input1_seq():
+    'Read a single line seq from a file'
+    return [el for el in input1().split()]
+
+
+def input_seqs(sep=None):
+    'Read multuple line-separated seqs from a file'
+    seqs = []
+    with open('in.txt', 'r') as f:
+        for line in f:
+            seqs.append([el for el in line.strip().split()])
+    return seqs
+
+
+def inputs():
+    'Read multiple line separated values'
+    with open('in.txt', 'r') as f:
+        return [line.strip() for line in f]
+
+
+def ints(seq):
+    'Cast a list of strings to ints'
+    return list(map(int, seq))
+
+
+def seqs_ints(seqs):
+    return list(map(ints, seqs))
+
+
 if __name__ == '__main__':
 
-    @trace
-    def sum(a, b):
-        return a + b
-
-    sum(1, 2)
+    # @trace
+    # def sum(a, b):
+    #     return a + b
+    #
+    # sum(1, 2)
