@@ -61,21 +61,21 @@ def trace(func):
 """ Input helpers """
 
 
-def input1():
+def input1(f='in.txt'):
     'Read a single line value from a file'
-    with open('in.txt', 'r') as f:
+    with open(f, 'r') as f:
         return f.read().strip()
 
 
-def input1_seq():
+def input1_seq(f='in.txt', sep=None):
     'Read a single line seq from a file'
-    return [el for el in input1().split()]
+    return [el for el in input1(f).split(sep)]
 
 
 def input_seqs(sep=None):
     'Read multuple line-separated seqs from a file'
     seqs = []
-    with open('in.txt', 'r') as f:
+    with open('thirteen_input.txt', 'r') as f:
         for line in f:
             seqs.append([el for el in line.strip().split()])
     return seqs
@@ -97,9 +97,4 @@ def seqs_ints(seqs):
 
 
 if __name__ == '__main__':
-
-    # @trace
-    # def sum(a, b):
-    #     return a + b
-    #
-    # sum(1, 2)
+    print('pass')
