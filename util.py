@@ -19,6 +19,14 @@ def zipwith(func, seq1, seq2):
     return [func(*t) for t in zip(seq1, seq2)]
 
 
+def chunks(seq, size):
+    chunks = []
+    while len(seq) > 0:
+        chunks.append(seq[:size])
+        seq = seq[size:]
+    return chunks
+
+
 # 2-D points using (x, y) tuples
 def X(point): return point[0]
 def Y(point): return point[1]
